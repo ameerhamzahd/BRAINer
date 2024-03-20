@@ -1,0 +1,65 @@
+/* Buttons */
+
+.Log-in{
+    background-color: white;
+    color: black;
+    border: none;
+    height: 36px;
+    width: 105px;
+    border-radius: 18px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.Log-in:hover{
+    background-color: gainsboro;
+}
+
+.Sign-up{
+    background-color: rgb(229, 9, 20);;
+    color: black;
+    border: none;
+    height: 36px;
+    width: 105px;
+    border-radius: 18px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.Sign-up:hover{
+    opacity: 0.75;
+}
+
+/* Header Start*/
+
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background: rgb(253, 244, 219);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li{
+    list-style: none;
+    padding: 0 100 px;
+}
+
+#navbar li a{
+    text-decoration: space-between;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+
