@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="thumbnail-03">
+    <section class="thumbnail03-details">
+        <h5>Games for enhancing cognitive abilities</h5>
+        <h3>Check out our cognitive games and exercizes</h3>
+    </section>
+</section>
+
+<section class="games-list">
+    <p class="Explore">Explore all the different areas you can train</p>
+</section>
+<section class="tod">
+    <div class="container">
+        <div class="tabs">
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab1" checked>
+            <label for="tab1" class="tab_label">Speed</label>
+
+            <div class="tab_content">
+                <tbody>
+                    <tr>
+                        <td style="width: 33%; padding: 10px">
+                            <h5>Speed Games</h5>
+                            <p>Test yourself with different games that improve how quickly you think.</p>
+                            <a href="/static/rt/index.html"><button class="start-now">Reflexx</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
+
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab2">
+            <label for="tab2" class="tab_label">Memory</label>
+
+            <div class="tab_content">
+                <tbody>
+                    <tr>
+                        <td style="width: 33%; padding: 10px">
+                            <h5>Memory Games</h5>
+                            <p>Try out games that challenge your memory skills.</p>
+                        </td>
+                    </tr>
+                    <a href = "/display_qs_ans"><button class="edit-profile">MEMOQUI</button></a>
+                    <a href = "/static/memo/index.html"><button class="edit-profile">MEMO</button></a>
+                </tbody>
+            </div>
+            
+
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab3">
+            <label for="tab3" class="tab_label">Attention</label>
+
+            <div class="tab_content">
+                <tbody>
+                    <tr>
+                        <td style="width: 33%; padding: 10px">
+                            <h5>Attention Games</h5>
+                            <p>Practice focusing with games meant to grab your attention.</p>
+                        </td>
+                    </tr>
+                    <a href="/game"><button class="start-now">Start Now</button></a>
+                </tbody>
+            </div>
+
+            
+
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab5">
+            <label for="tab5" class="tab_label">Problem Solving</label>
+
+            <div class="tab_content">
+                <tbody>
+                    <tr>
+                        <td style="width: 33%; padding: 10px">
+                            <h5>Problem Solving Games</h5>
+                            <p>Strengthen your planning, spatial reasoning, and logical skills with these games.
+                            </p>
+                        </td>
+                    </tr>
+                    <a href="/static/puzzle/index.html"><button class="start-now">Rearrange</button></a>
+                    
+                </tbody>
+            </div>
+
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab6">
+            <label for="tab6" class="tab_label">Quiz</label>
+
+            <div class="tab_content">
+                <tbody>
+                    <tr>
+                        <td style="width: 33%; padding: 10px">
+                            <h5>Quiz Games</h5>
+                            <p>Challenge yourself with quiz games that enhance your quick thinking.</p>
+                        </td>
+                    </tr>
+                    <a href="/static/Brainer quuiz/index.html"><button class="start-now">Start Now</button></a>
+                </tbody>
+            </div>
+        </div>
+</section>
+{% endblock  %}

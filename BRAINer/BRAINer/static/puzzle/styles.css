@@ -1,0 +1,35 @@
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+#puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background-size: 400px 400px; /* Adjusted to fit 4x4 grid */
+}
+
+#actual-image-container {
+    margin-left: 20px; /* Adjust the margin as needed */
+}
+
+#actual-image-container p {
+    font-weight: bold;
+}
+
+#actual-image {
+    width: 300px; /* Adjust the size of the actual image as needed */
+    height: 300px; /* Adjust the size of the actual image as needed */
+}

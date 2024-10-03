@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Time Test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="instructions">Wait for the green screen, then click as quickly as you can.</div>
+        <div id="screen" onclick="handleClick()"></div>
+        <div id="result"></div>
+        <button id="startButton" onclick="startTest()">Start</button>
+        <button id="retryButton" onclick="retryTest()" style="display: none;">Retry</button>
+        <button id="saveButton" onclick="saveScore()" style="display: none;">Save Score</button>
+        <div id="popup" class="popup" style="display: none;">Click again to continue</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

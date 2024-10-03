@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- display_qs_ans.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Questions and Answers</title>
+        <link rel="stylesheet" href="/static/minhaz.css">
+    </head>
+    
+<body>
+    <div class="adqs">
+        <h1>Questions and Answers</h1>
+        <form action="/answer_page/" method="POST">
+            {% csrf_token %}
+            {% for question in questions %}
+                <h3>{{ question.qs }}</h3>
+                <p><strong>Answer:</strong> {{ question.ans }}</p>
+                <hr>
+            {% endfor %}
+            <button type="submit">Proceed to Answer</button>
+        </form>
+    </div>
+    
+</body>
+</html>
+
+{% endblock  %}

@@ -1,0 +1,77 @@
+<!-- answer_page.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer the Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            width: 60%;
+            margin: 0 auto;
+            background-color: #fff; /* White background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        button[type="submit"] {
+            background-color: #4caf50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ddd; /* Light gray line */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Answer the Questions</h1>
+    <form action="{% url 'calculate_score' %}" method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+            <h3>{{ question.qs }}</h3>
+            <ul>
+                <li><input type="radio" name="answer_{{ question.id }}" value="{{ question.ans }}"> {{ question.ans }}</li>
+                <li><input type="radio" name="answer_{{ question.id }}" value="{{ question.w_ans }}"> {{ question.w_ans }}</li>
+                <li><input type="radio" name="answer_{{ question.id }}" value="{{ question.w2_ans }}"> {{ question.w2_ans }}</li>
+            </ul>
+            <hr>
+        {% endfor %}
+        <button type="submit">Submit Answers</button>
+    </form>
+</body>
+</html>
+
+{% endblock  %}

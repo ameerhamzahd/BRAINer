@@ -1,0 +1,439 @@
+{% include "header02.html" %}
+{% block content %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta chartset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+    <meta name="description" content="cognitive games and exercises">
+    <meta name="keywords" content="BRAINer">
+    <meta name="author" content="Three-One-Three">
+
+    <title> Profile/BRAINer </title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    
+
+    <section class="profile">
+        <div class="profile-photo">
+            {% if user_profile.image %}
+                <img src="{{ user_profile.image.url }}" alt="User Image">
+            {% else %}
+                <img src="/static/image/noprofil.jpg" alt="">
+            {% endif %}
+            
+
+            {% comment %} <div class="round">
+                <input type="file">
+                <i class="fa fa-camera" style="color: #eaf0ff;"></i>
+            </div> {% endcomment %}
+            
+            <table class="condition">
+                <thead>
+                    <tr>
+                        <th>Percentage</th>
+                        <th>Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0-20%</td>
+                        <td>Worst</td>
+                    </tr>
+                    <tr>
+                        <td>21-40%</td>
+                        <td>Bad</td>
+                    </tr>
+                    <tr>
+                        <td>41-60%</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>61-80%</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <td>81-100%</td>
+                        <td>Excellent</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tabs">
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab7" checked>
+            <label for="tab7" class="tab_label">Overview</label>
+
+            <div class="tab_content">
+                <h5>User Information</h5>
+
+                <ul>
+                    <li><strong>Name : </strong> {{ user_profile.name }}</li>
+                    <li><strong>E-mail : </strong> {{ user.email }}</li>
+                    <li><strong>Usename : </strong> {{ user.username }}</li>
+                    <li><strong>Gender : </strong> {{ user_profile.get_gender_display }}</li>
+                    <li><strong>Age : </strong> {{ user_profile.age }}</li>
+                    <li><strong>Job : </strong> {{ user_profile.job }}</li>
+                    <li><strong>language : </strong> {{ user_profile.language }}</li>
+                    <li><strong>Education : </strong> {{ user_profile.education }}</li>
+                    
+                    <li><strong>Overall Success Rate(%) : </strong>{{ user_profile.percentage }}%</li>
+                    <li><strong>Condition : </strong>
+                      {% if user_profile.percentage <= 20.00 %}
+                        Worst
+                      {% elif user_profile.percentage > 20.00 and user_profile.percentage <= 40.00 %}
+                        Bad
+                      {% elif user_profile.percentage > 40.00 and user_profile.percentage <= 60.00 %}
+                        Medium
+                      {% elif user_profile.percentage > 60.00 and user_profile.percentage <= 80.00 %}
+                        Good
+                      {% else %}
+                        Excellent
+                      {% endif %}
+                    
+                    </li>
+                </ul>
+
+                <a href = "/edit"><button class="edit-profile">Edit Profile</button></a>
+                <a href = "/qs_add"><button class="edit-profile">ADD QUESTION</button></a>
+                <a href = "/display_qs_ans_all"><button class="edit-profile">CHECK QUESTION</button></a>
+                
+            </div>
+
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab8">
+            <label for="tab8" class="tab_label">Scorecard</label>
+
+            <div class="tab_content">
+                <table class="scorecard">
+                    <thead>
+                        <tr>
+                            <th>Types of the games</th>
+                            <th>Name of the games</th>
+                            <th>Highest Score</th>
+                            <th>Average of last 5 scores</th>
+                            <th>Previous Success Rate(%)</th>
+                            <th>Present Success Rate(%)</th>
+                            <th>Condition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2"><strong>Speed</strong></td>
+                            <td>Sub Row 1.1</td>
+                            <td>Sub Row 1.2</td>
+                            <td>Sub Row 1.3</td>
+                            <td>Sub Row 1.4</td>
+                            <td>Sub Row 1.5</td>
+                            <td rowspan="2"><strong>Excellent</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sub Row 2.1</td>
+                            <td>Sub Row 2.2</td>
+                            <td>Sub Row 2.3</td>
+                            <td>Sub Row 2.4</td>
+                            <td>Sub Row 2.5</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <td>Sub Row 3.1</td>
+                            <td>Sub Row 3.2</td>
+                            <td>Sub Row 3.3</td>
+                            <td>Sub Row 3.4</td>
+                            <td>Sub Row 3.5</td>
+                        </tr> {% endcomment %}
+                        <tr>
+                            <th>Types of the games</th>
+                            <th>Name of the games</th>
+                            <th>Highest Score</th>
+                            <th>Average of last 5 scores</th>
+                            <th>Previous Success Rate(%)</th>
+                            <th>Present Success Rate(%)</th>
+                            <th>Condition</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>Memory</strong></td>
+                            <td>MEMOQUI</td>
+                            <td> 
+                                {{ user_profile.memoeui_de_high_score }}
+                            </td>
+                            <td>
+                                {{ user_profile.memoeui_de_avareg_last_5 }}
+
+                            </td>
+                            <td>
+                                {{ user_profile.memoeui_de_previous_s_rate }} %
+                            </td>
+                            <td>
+                                {{ user_profile.memoeui_de_present_s_rate }} %
+                            </td>
+                            <td rowspan="2"><strong>
+                                {% if user_profile.memoeui_de_present_s_rate <= 20 %}
+                                    Worst
+                                {% elif user_profile.memoeui_de_present_s_rate <= 40 %}
+                                    Bad
+                               {% elif user_profile.memoeui_de_present_s_rate <= 60 %}
+                                    Medium
+                                {% elif user_profile.memoeui_de_present_s_rate <= 80 %}
+                                    Good
+                                {% else %}
+                                    Excellent
+                                {% endif %}
+                            </strong></td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Sub Row 2.1</td>
+                            <td>Sub Row 2.2</td>
+                            <td>Sub Row 2.3</td>
+                            <td>Sub Row 2.4</td>
+                            <td>Sub Row 2.5</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <td>Sub Row 3.1</td>
+                            <td>Sub Row 3.2</td>
+                            <td>Sub Row 3.3</td>
+                            <td>Sub Row 3.4</td>
+                            <td>Sub Row 3.5</td>
+                        </tr> {% endcomment %}
+                        <tr>
+                            <th>Types of the games</th>
+                            <th>Name of the games</th>
+                            <th>Highest Score</th>
+                            <th>Average of last 5 scores</th>
+                            <th>Previous Success Rate(%)</th>
+                            <th>Present Success Rate(%)</th>
+                            <th>Condition</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>Attention</strong></td>
+                            <td>Sub Row 1.1</td>
+                            <td>Sub Row 1.2</td>
+                            <td>Sub Row 1.3</td>
+                            <td>Sub Row 1.4</td>
+                            <td>Sub Row 1.5</td>
+                            <td rowspan="2"><strong>Good</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sub Row 2.1</td>
+                            <td>Sub Row 2.2</td>
+                            <td>Sub Row 2.3</td>
+                            <td>Sub Row 2.4</td>
+                            <td>Sub Row 2.5</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <td>Sub Row 3.1</td>
+                            <td>Sub Row 3.2</td>
+                            <td>Sub Row 3.3</td>
+                            <td>Sub Row 3.4</td>
+                            <td>Sub Row 3.5</td>
+                        </tr> {% endcomment %}
+                        <tr>
+                            <th>Types of the games</th>
+                            <th>Name of the games</th>
+                            <th>Highest Score</th>
+                            <th>Average of last 5 scores</th>
+                            <th>Previous Success Rate(%)</th>
+                            <th>Present Success Rate(%)</th>
+                            <th>Condition</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>Flexibility</strong></td>
+                            <td>Sub Row 1.1</td>
+                            <td>Sub Row 1.2</td>
+                            <td>Sub Row 1.3</td>
+                            <td>Sub Row 1.4</td>
+                            <td>Sub Row 1.5</td>
+                            <td rowspan="2"><strong>Bad</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sub Row 2.1</td>
+                            <td>Sub Row 2.2</td>
+                            <td>Sub Row 2.3</td>
+                            <td>Sub Row 2.4</td>
+                            <td>Sub Row 2.5</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <td>Sub Row 3.1</td>
+                            <td>Sub Row 3.2</td>
+                            <td>Sub Row 3.3</td>
+                            <td>Sub Row 3.4</td>
+                            <td>Sub Row 3.5</td>
+                        </tr> {% endcomment %}
+                        <tr>
+                            <th>Types of the games</th>
+                            <th>Name of the games</th>
+                            <th>Highest Score</th>
+                            <th>Average of last 5 scores</th>
+                            <th>Previous Success Rate(%)</th>
+                            <th>Present Success Rate(%)</th>
+                            <th>Condition</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>Problem Solving</strong></td>
+                            <td>Sub Row 1.1</td>
+                            <td>Sub Row 1.2</td>
+                            <td>Sub Row 1.3</td>
+                            <td>Sub Row 1.4</td>
+                            <td>Sub Row 1.5</td>
+                            <td rowspan="2"><strong>Very Bad</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sub Row 2.1</td>
+                            <td>Sub Row 2.2</td>
+                            <td>Sub Row 2.3</td>
+                            <td>Sub Row 2.4</td>
+                            <td>Sub Row 2.5</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <td>Sub Row 3.1</td>
+                            <td>Sub Row 3.2</td>
+                            <td>Sub Row 3.3</td>
+                            <td>Sub Row 3.4</td>
+                            <td>Sub Row 3.5</td>
+                        </tr> {% endcomment %}
+                        <tr>
+                            <th>Types of the games</th>
+                            <th>Name of the games</th>
+                            <th>Highest Score</th>
+                            <th>Average of last 5 scores</th>
+                            <th>Previous Success Rate(%)</th>
+                            <th>Present Success Rate(%)</th>
+                            <th>Condition</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>Quiz</strong></td>
+                            <td>Sub Row 1.1</td>
+                            <td>Sub Row 1.2</td>
+                            <td>Sub Row 1.3</td>
+                            <td>Sub Row 1.4</td>
+                            <td>Sub Row 1.5</td>
+                            <td rowspan="2"><strong>Good</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sub Row 2.1</td>
+                            <td>Sub Row 2.2</td>
+                            <td>Sub Row 2.3</td>
+                            <td>Sub Row 2.4</td>
+                            <td>Sub Row 2.5</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <td>Sub Row 3.1</td>
+                            <td>Sub Row 3.2</td>
+                            <td>Sub Row 3.3</td>
+                            <td>Sub Row 3.4</td>
+                            <td>Sub Row 3.5</td>
+                        </tr> {% endcomment %}
+                    </tbody>
+                </table>
+            </div>
+
+            <input type="radio" class="tab_radio" name="tabs-example" id="tab9">
+            <label for="tab9" class="tab_label">Portfolio</label>
+
+            <div class="tab_content">
+                <section class="graph">
+                    <div class="container">
+                        <div class="background-grid">
+                            <span class="line" value="100%"></span>
+                            <span class="line" value="80%"></span>
+                            <span class="line" value="60%"></span>
+                            <span class="line" value="40%"></span>
+                            <span class="line" value="20%"></span>
+                            <span class="line" value="0%"></span>
+                        </div>
+
+                        <div class="base"></div>
+
+                        <div class="bar-container">
+                            <div class="bar" style="max-height: 85%"></div>
+                            <div class="bar" style="max-height: 61%"></div>
+                            <div class="bar" style="max-height: 15%"></div>
+                            <div class="bar" style="max-height: 47%"></div>
+                            <div class="bar" style="max-height: 26%"></div>
+                            <div class="bar" style="max-height: 75%"></div>
+                        </div>
+
+                        <div class="game-titles">
+                            <span>Speed</span>
+                            <span>Memory</span>
+                            <span>Attention</span>
+                            <span>Flexibility</span>
+                            <span>Problem Solving</span>
+                            <span>Quiz</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <section class="banner02">
+        <img class="bannerphoto02" src="/static/image/bannerphoto02.jpg" alt="bannerphoto">
+        <h5>Would you like to play? Let's play!</h5>
+        <p>Have fun and track your scores.</p>
+        <a href="/games"><button class="start-now">Start Now</button></a>
+    </section>
+
+    <section class="banner">
+        <img class="bannerphoto" src="/static/image/3476.jpg" alt="bannerphoto">
+        <h5>Meet BRAINer's Consultants</h5>
+        <p>Patients can get support from BRAINer's consultants through the website by scheduling appointments of
+            video-call conference or sending e-mails.</p>
+            <a href="/services"><button class="learn-more">Learn More</button></a>
+    </section>
+
+    <footer class="section-padding-1">
+        <div class="col">
+            <h3 class="company-name">BRAINer</h3>
+            <a href="/reg">Get Started</a>
+            <a href="/login">Log In</a>
+            <a href="/games">Our Games & Exercises</a>
+            <a href="/services">Services</a>
+        </div>
+
+        <div class="col1">
+            <h4>Three-One-Three</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+        </div>
+
+        <div class="col1">
+            <h4>Help</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col1">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms od Services</a>
+        </div>
+
+        <div class="col-install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="/static/image/store02.jpg" alt="appStore">
+                <img src="/static/image/store01.jpg" alt="playStore">
+            </div>
+            <p>Secured Payment Gateway</p>
+            <img class="payment-photo" src="/static/image/payment.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>Copyright &#169 2024 <strong>Three-One-Three</strong>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"> </script>
+</body>
+
+</html>
+{% endblock  %}

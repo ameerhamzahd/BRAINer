@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+
+<head>
+    <meta chartset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+    <meta name="description" content="cognitive games and exercises">
+    <meta name="keywords" content="BRAINer">
+    <meta name="author" content="Three-One-Three">
+    
+
+    <title> BRAINer </title>
+    <link href="/static/Image/logo.png" rel="icon">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- page 01 -->
+    <section class="header">
+        <div class="logo-section">
+            <a href={% url 'home' %}><img src="/static/image/logo.png" alt="logo"></a>
+            <a href={% url 'home' %} class="company-name"><strong>BRAINer</strong></a>
+        </div>
+
+        <div>
+            <ul class="navbar">
+                <li><a href="/" class="{% if request.path == '/' %} active {% endif %}"> Home </a></li>
+                <li><a href="/games" class="{% if request.path == '/games/' %} active {% endif %}"> Games & Exercises </a></li>
+                <li><a href="/services"  class="{% if request.path == '/services/' %} active {% endif %}"> Services </a></li>
+                <a href = "/login"  class="{% if request.path == '/login/' %} active {% endif %}"><button class="Log-in">Log in</button></a>
+                <a href = "/reg"  class="{% if request.path == '/reg/' %} active {% endif %}"><button class="Register">Register</button></a>
+        </div>
+    </section>

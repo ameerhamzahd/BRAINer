@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score</title>
+</head>
+<body>
+    <div class="contententor">
+        <p class="hello-joi">Your score is: {{ score }}</p>
+        <a href="{% url 'user_profile' %}"><button class="edit-profile">GO profile</button></a>
+        <a href="{% url 'display_qs_ans' %}"><button class="edit-profile">PLAY AGAIN</button></a>
+    </div>
+</body>
+</html>
+{% endblock  %}

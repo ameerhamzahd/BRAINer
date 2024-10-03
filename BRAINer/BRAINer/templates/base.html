@@ -1,0 +1,13 @@
+{% if request.user.is_authenticated %}
+    {% include "header02.html" %}
+{% else %}
+    {% include "header.html" %} 
+{% endif %}
+
+
+
+{% block content %}
+{% endblock  %}
+
+
+{% include "footer.html" %}

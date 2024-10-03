@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <section class="registration_page">
+  <div class="page-wrappererr">
+    <form class="custom-form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+          <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label><br>
+          {{ field }}<br><br>
+      {% endfor %}
+      <button class="custom-button" type="submit">Save</button>
+      <div class="custom-error">{{ form.errors }}</div>
+    </form>
+  </div>
+</section>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <section class="thumbnaieddd">
+     <div class="containerrrrrrrr">
+        <div class="form-title">Create User Profile</div>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.name.label }}
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                {{ form.gender.label }}
+                {{ form.gender }}
+            </div>
+            <div class="form-group">
+                {{ form.age.label }}
+                {{ form.age }}
+            </div>
+            <div class="form-group">
+                {{ form.job.label }}
+                {{ form.job }}
+            </div>
+            <div class="form-group">
+                {{ form.language.label }}
+                {{ form.language }}
+            </div>
+            <div class="form-group">
+                {{ form.education.label }}
+                {{ form.education }}
+            </div>
+            <div class="form-group">
+                {{ form.image.label }}
+                {{ form.image }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+ </section>
+</body>
+</html>
+
+{% endblock  %}

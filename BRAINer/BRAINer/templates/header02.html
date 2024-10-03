@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta chartset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+    <meta name="description" content="cognitive games and exercises">
+    <meta name="keywords" content="BRAINer">
+    <meta name="author" content="Three-One-Three">
+
+    <title> BRAINer </title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="header">
+        <div class="logo-section">
+            <a href={% url 'home' %}><img src="/static/image/logo.png" alt="logo"></a>
+            <a href={% url 'home' %} class="company-name"><strong>BRAINer</strong></a>
+        </div>
+
+        <div>
+            <ul class="navbar">
+                <li><a href="/" class="{% if request.path == '/' %} active {% endif %}"> Home </a></li>
+                <li><a href="/games" class="{% if request.path == '/games/' %} active {% endif %}"> Games & Exercises </a></li>
+                <li><a href="/services"  class="{% if request.path == '/services/' %} active {% endif %}"> Services </a></li>
+
+                <a href="/profile" class="username">{{request.user}}</a>
+                <a href=" {% url 'logout' %}"><button class="Log-in">Log out</button></a>
+            </ul>
+        </div>
+    </section>
+
+    <script src="script.js"> </script>
+</body>
+
+</html>
